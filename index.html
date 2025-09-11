@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>José López - Portfolio</title>
+  <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link" data-key="skipLink">Saltar al contenido principal</a>
+  <header class="header" role="banner">
+    <div class="container">
+      <div class="profile-section">
+        <img class="avatar" id="avatar" src="assets/img/avatar.png" alt="José López - Desarrollador Web Full-Stack"
+          data-key="altAvatar">
+        <div class="contact-info">
+          <h1>José López</h1>
+          <nav class="social-links" aria-label="Enlaces de contacto" data-key="socialLinksLabel">
+            <ul>
+              <li>
+                <a href="mailto:jslquintero@gmail.com" aria-label="Enviar email a José López" data-key="emailLabel">
+                  jslquintero@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/jslquintero" target="_blank" rel="noopener noreferrer"
+                  aria-label="Ver perfil de GitHub de José López" data-key="githubLabel">
+                  GitHub/jslquintero
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/jslquintero" target="_blank" rel="noopener noreferrer"
+                  aria-label="Ver perfil de LinkedIn de José López" data-key="linkedinLabel">
+                  LinkedIn/jslquintero
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <button id="lang-switcher" class="lang-btn" aria-label="Cambiar idioma">
+          <span data-key="languageSwitcher.switchTo">English</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main" id="main-content" role="main">
+    <div class="container">
+      <section class="about-section" aria-labelledby="about-heading" role="region">
+        <h2 id="about-heading" data-key="aboutHeading">Sobre Mí</h2>
+        <p data-key="aboutText1">Desarrollador Web Full-Stack orientado a resultados con más de 4 años de experiencia
+          entregando soluciones web de alto impacto para diversos sectores, desde cadenas nacionales de supermercados
+          hasta empresas de salud y distribuidoras. Capacidad demostrada para traducir requisitos comerciales complejos
+          en soluciones técnicas escalables, incluyendo migraciones completas de tecnologías y sistemas de
+          digitalización full-stack.</p>
+        <p data-key="aboutText2">Especialista en ASP.NET, React, Angular y Vue, con experiencia en proyectos que van
+          desde dashboards administrativos hasta sistemas de gestión empresarial que mejoran significativamente la
+          eficiencia operativa.</p>
+      </section>
+
+      <section class="projects-section" aria-labelledby="projects-heading" role="region">
+        <h2 id="projects-heading" data-key="projectsHeading">Proyectos</h2>
+        <p data-key="projectsDescription">Algunos de los proyectos destacados en los que he trabajado:</p>
+        <ul class="projects-list" id="projects-list">
+          <!-- Projects will be dynamically loaded -->
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    let currentLang = 'en';
+    let translations = {};
+
+    async function loadTranslations(lang) {
+      try {
+        const response = await fetch(`assets/lang/${lang}.json`);
+        translations[lang] = await response.json();
+      } catch (error) {
+        console.error(`Error loading ${lang} translations:`, error);
+      }
+    }
+
+    function updateContent() {
+      const langData = translations[currentLang];
+      if (!langData) return;
+
+      // Update elements with data-key attributes
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        const value = getNestedValue(langData, key);
+        if (value) {
+          if (element.tagName === 'IMG') {
+            element.alt = value;
+          } else if (element.hasAttribute('aria-label')) {
+            element.setAttribute('aria-label', value);
+          } else {
+            element.textContent = value;
+          }
+        }
+      });
+
+      // Update document title
+      document.title = langData.title;
+
+      // Update HTML lang attribute
+      document.documentElement.lang = currentLang;
+
+      // Update projects list
+      updateProjectsList(langData.projects);
+    }
+
+    function getNestedValue(obj, path) {
+      return path.split('.').reduce((current, key) => current?.[key], obj);
+    }
+
+    function updateProjectsList(projects) {
+      const projectsList = document.getElementById('projects-list');
+      projectsList.innerHTML = projects.map(project => `
+        <li>
+          <h3>${project.title}</h3>
+          <p>${project.description}</p>
+        </li>
+      `).join('');
+    }
+
+    function switchLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      updateContent();
+    }
+
+    let avatarClickCount = 0;
+    const easterEggAvatars = ['assets/img/avatar_2.png'];
+
+    function handleAvatarClick() {
+      avatarClickCount++;
+
+      if (avatarClickCount === 3) {
+        // Select random avatar
+        const randomAvatar = easterEggAvatars[Math.floor(Math.random() * easterEggAvatars.length)];
+        const avatar = document.getElementById('avatar');
+
+        // Add a fun animation
+        avatar.style.transform = 'scale(1.1) rotate(5deg)';
+        avatar.style.transition = 'transform 0.3s ease';
+
+        setTimeout(() => {
+          avatar.src = randomAvatar;
+          avatar.style.transform = 'scale(1) rotate(0deg)';
+
+          // Reset counter after a delay
+          setTimeout(() => {
+            avatarClickCount = 0;
+          }, 5000);
+        }, 300);
+      }
+    }
+
+    // Initialize
+    async function init() {
+      await Promise.all([
+        loadTranslations('es'),
+        loadTranslations('en')
+      ]);
+      updateContent();
+
+      document.getElementById('lang-switcher').addEventListener('click', switchLanguage);
+      document.getElementById('avatar').addEventListener('click', handleAvatarClick);
+    }
+
+    // Start when DOM is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+
+</html>

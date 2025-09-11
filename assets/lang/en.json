@@ -1,0 +1,40 @@
+{
+  "skipLink": "Skip to main content",
+  "title": "José López - Portfolio",
+  "altAvatar": "José López - Full-Stack Web Developer",
+  "socialLinksLabel": "Contact links",
+  "emailLabel": "Send email to José López",
+  "githubLabel": "View José López's GitHub profile",
+  "linkedinLabel": "View José López's LinkedIn profile",
+  "aboutHeading": "About Me",
+  "aboutText1": "Results-oriented Full-Stack Web Developer with over 4 years of experience delivering high-impact web solutions for various sectors, from national supermarket chains to healthcare companies and distributors. Demonstrated ability to translate complex business requirements into scalable technical solutions, including complete technology migrations and full-stack digitalization systems.",
+  "aboutText2": "Specialist in ASP.NET, React, Angular and Vue, with experience in projects ranging from administrative dashboards to enterprise management systems that significantly improve operational efficiency.",
+  "projectsHeading": "Projects",
+  "projectsDescription": "Some of the outstanding projects I have worked on:",
+  "projects": [
+    {
+      "title": "WMS System for Latin American Company",
+      "description": "Developed a WMS system for a Latin American company with branches in Central America along with SAP (System Applications and Products in Data Processing) integration for inventory control and company logistics integration."
+    },
+    {
+      "title": "Internal Supermarket Web Portal",
+      "description": "Created views and functionalities using ASP.NET and SQL Server oriented to the internal system of a national supermarket chain."
+    },
+    {
+      "title": "Panther Healthcare México Web Portal",
+      "description": "Developed the complete migration of the Panther Healthcare México portal from PHP to ASP.NET Razor Pages, implementing a multi-language translation system."
+    },
+    {
+      "title": "Nabors Industries Administrative System",
+      "description": "Developed final modules and new functionalities in Angular for the Nabors Industries administrative system."
+    },
+    {
+      "title": "MendoGlass Argentina Digitalization System",
+      "description": "Developed a complete full-stack digitalization system for MendoGlass Argentina using Vue on the front-end, and ASP.NET with SQL Server on the back-end."
+    }
+  ],
+  "languageSwitcher": {
+    "current": "English",
+    "switchTo": "Español"
+  }
+}

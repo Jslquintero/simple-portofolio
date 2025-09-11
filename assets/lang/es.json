@@ -1,0 +1,40 @@
+{
+  "skipLink": "Saltar al contenido principal",
+  "title": "José López - Portfolio",
+  "altAvatar": "José López - Desarrollador Web Full-Stack",
+  "socialLinksLabel": "Enlaces de contacto",
+  "emailLabel": "Enviar email a José López",
+  "githubLabel": "Ver perfil de GitHub de José López",
+  "linkedinLabel": "Ver perfil de LinkedIn de José López",
+  "aboutHeading": "Sobre Mí",
+  "aboutText1": "Desarrollador Web Full-Stack orientado a resultados con más de 4 años de experiencia entregando soluciones web de alto impacto para diversos sectores, desde cadenas nacionales de supermercados hasta empresas de salud y distribuidoras. Capacidad demostrada para traducir requisitos comerciales complejos en soluciones técnicas escalables, incluyendo migraciones completas de tecnologías y sistemas de digitalización full-stack.",
+  "aboutText2": "Especialista en ASP.NET, React, Angular y Vue, con experiencia en proyectos que van desde dashboards administrativos hasta sistemas de gestión empresarial que mejoran significativamente la eficiencia operativa.",
+  "projectsHeading": "Proyectos",
+  "projectsDescription": "Algunos de los proyectos destacados en los que he trabajado:",
+  "projects": [
+    {
+      "title": "Sistema WMS para empresa Latinoamericana",
+      "description": "Desarrollé un sistema WMS para una empresa latinoamericana con sucursales en Centro América junto con la integración de SAP (System Applications and Products in Data Processing) para el control de inventario e integración de la logística de la empresa."
+    },
+    {
+      "title": "Portal Web Interno de Supermercado",
+      "description": "Creé vistas y funcionalidades usando ASP.NET y SQL Server orientadas al sistema interno de una cadena nacional de supermercados."
+    },
+    {
+      "title": "Portal Web de Panther Healthcare México",
+      "description": "Desarrollé la migración completa del portal Panther Healthcare México de PHP a ASP.NET Razor Pages, implementando un sistema de traducción multiidioma."
+    },
+    {
+      "title": "Sistema Administrativo de Nabors Industries",
+      "description": "Desarrollé módulos finales y nuevas funcionalidades en Angular para el sistema administrativo de Nabors Industries."
+    },
+    {
+      "title": "Sistema de Digitalización de MendoGlass Argentina",
+      "description": "Desarrollé un sistema completo de digitalización full-stack para MendoGlass Argentina utilizando Vue en el front-end, y ASP.NET con SQL Server en el back-end."
+    }
+  ],
+  "languageSwitcher": {
+    "current": "Español",
+    "switchTo": "English"
+  }
+}
