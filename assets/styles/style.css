@@ -102,7 +102,11 @@ body {
 .social-links ul {
   list-style: none;
   display: grid;
+  grid-template-columns: repeat(3, max-content);
   gap: var(--spacing-xs);
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
 
 .social-links a {
@@ -125,6 +129,28 @@ body {
   outline-offset: 2px;
 }
 
+/* Social links alignment fix */
+.link-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-link-item {
+  margin-bottom: 8px;
+}
+
+.icon-link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
 .main {
   padding: var(--spacing-xl) 0;
 }
