@@ -78,6 +78,14 @@
           <!-- Projects will be dynamically loaded -->
         </ul>
       </section>
+
+      <section class="latest-repos-section" aria-labelledby="latest-repos-heading" role="region">
+        <h2 id="latest-repos-heading" data-key="latestReposHeading">Latest Repositories</h2>
+        <p data-key="latestReposDescription">My most recent projects from GitHub:</p>
+        <ul class="latest-repos-list" id="latest-repos-list">
+          <!-- Latest repos will be dynamically loaded -->
+        </ul>
+      </section>
     </div>
   </main>
 
@@ -137,6 +145,33 @@
       `).join('');
     }
 
+    async function fetchLatestRepos() {
+      try {
+        const response = await fetch('https://api.github.com/users/jslquintero/repos?sort=updated&direction=desc&per_page=5&type=public');
+        if (!response.ok) throw new Error('Failed to fetch repos');
+        const repos = await response.json();
+        const filteredRepos = repos.filter(repo => !repo.fork);
+        updateLatestReposList(filteredRepos);
+      } catch (error) {
+        console.error('Error fetching latest repos:', error);
+        updateLatestReposList(null);
+      }
+    }
+
+    function updateLatestReposList(repos) {
+      const reposList = document.getElementById('latest-repos-list');
+      if (!repos) {
+        reposList.innerHTML = `<li data-key="latestReposError">Unable to load latest repositories</li>`;
+        return;
+      }
+      reposList.innerHTML = repos.map(repo => `
+        <li>
+          <h3><a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3>
+          <p>${repo.description || ''}</p>
+        </li>
+      `).join('');
+    }
+
     function switchLanguage() {
       currentLang = currentLang === 'es' ? 'en' : 'es';
       updateContent();
@@ -176,6 +211,7 @@
         loadTranslations('en')
       ]);
       updateContent();
+      await fetchLatestRepos();
 
       document.getElementById('lang-switcher').addEventListener('click', switchLanguage);
       document.getElementById('avatar').addEventListener('click', handleAvatarClick);

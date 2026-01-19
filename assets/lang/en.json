@@ -33,6 +33,9 @@
       "description": "Developed a complete full-stack digitalization system for MendoGlass Argentina using Vue on the front-end, and ASP.NET with SQL Server on the back-end."
     }
   ],
+  "latestReposHeading": "Latest Repositories",
+  "latestReposDescription": "My most recent projects from GitHub:",
+  "latestReposError": "Unable to load latest repositories",
   "languageSwitcher": {
     "current": "English",
     "switchTo": "Español"

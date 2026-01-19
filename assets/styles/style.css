@@ -156,53 +156,74 @@ body {
 }
 
 .about-section,
-.projects-section {
+.projects-section,
+.latest-repos-section {
   margin-bottom: var(--spacing-xl);
 }
 
 .about-section h2,
-.projects-section h2 {
+.projects-section h2,
+.latest-repos-section h2 {
   font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: var(--spacing-md);
   font-weight: 600;
 }
 
-.about-section p {
+.about-section p,
+.latest-repos-section p {
   margin-bottom: var(--spacing-md);
   font-size: 1.1rem;
   line-height: 1.7;
   color: var(--text-light);
 }
 
-.projects-list {
+.projects-list,
+.latest-repos-list {
   list-style: none;
   margin-top: var(--spacing-lg);
 }
 
-.projects-list li {
+.projects-list li,
+.latest-repos-list li {
   margin-bottom: var(--spacing-lg);
   padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--border-color);
 }
 
-.projects-list li:last-child {
+.projects-list li:last-child,
+.latest-repos-list li:last-child {
   border-bottom: none;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-.projects-list h3 {
+.projects-list h3,
+.latest-repos-list h3 {
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: var(--spacing-sm);
   font-weight: 600;
 }
 
-.projects-list p {
+.projects-list p,
+.latest-repos-list p {
   color: var(--text-light);
   line-height: 1.6;
   margin: 0;
+}
+
+/* Styles for links in latest repos */
+.latest-repos-list h3 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.latest-repos-list h3 a:hover,
+.latest-repos-list h3 a:focus {
+  color: var(--text-color);
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
